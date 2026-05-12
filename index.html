@@ -263,9 +263,6 @@
       if (!movie.poster_url) {
         return `<div class="poster-fallback">🍿<br>${escapeHtml(movie.title)}</div>`;
       }
-      if (movie.media_type === 'video') {
-        return `<video class="poster" src="${movie.media_url}" muted playsinline preload="metadata"></video>`;
-      }
       return `<img class="poster" src="${movie.poster_url}" loading="lazy" alt="${escapeHtml(movie.title)}" onerror="this.outerHTML='<div class=&quot;poster-fallback&quot;>🍿<br>${escapeHtml(movie.title)}</div>'">`;
     }
 

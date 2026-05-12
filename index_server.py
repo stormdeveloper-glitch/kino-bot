@@ -73,23 +73,13 @@ def resolve_file_id(file_id: str) -> dict:
     if not BOT_TOKEN or not file_id:
         return {"ok": False, "url": "", "type": "none", "ts": now}
 
-
-def telegram_json(method: str, params: dict | None = None) -> dict:
-    if not BOT_TOKEN:
-        return {}
-    query = ""
-    if params:
-        query = "?" + urllib.parse.urlencode(params)
-    url = f"https://api.telegram.org/bot{BOT_TOKEN}/{method}{query}"
-    with urllib.request.urlopen(url, timeout=10) as response:
-        return json.loads(response.read().decode("utf-8"))
-
     query = urllib.parse.urlencode({"file_id": file_id})
     api_url = f"https://api.telegram.org/bot{BOT_TOKEN}/getFile?{query}"
     try:
         with urllib.request.urlopen(api_url, timeout=12) as response:
             data = json.loads(response.read().decode("utf-8"))
         if not data.get("ok"):
+            print(f"[web] getFile xatosi: {data.get('description', 'unknown')}")
             return {"ok": False, "url": "", "type": "none", "ts": now}
 
         file_path = data["result"]["file_path"]
@@ -100,8 +90,19 @@ def telegram_json(method: str, params: dict | None = None) -> dict:
         MEDIA_CACHE[file_id] = result
         return result
     except Exception as exc:
-        print(f"[web] getFile xatosi: {exc}")
+        print(f"[web] getFile exception: {exc}")
         return {"ok": False, "url": "", "type": "none", "ts": now}
+
+
+def telegram_json(method: str, params: dict | None = None) -> dict:
+    if not BOT_TOKEN:
+        return {}
+    query = ""
+    if params:
+        query = "?" + urllib.parse.urlencode(params)
+    url = f"https://api.telegram.org/bot{BOT_TOKEN}/{method}{query}"
+    with urllib.request.urlopen(url, timeout=10) as response:
+        return json.loads(response.read().decode("utf-8"))
 
 
 def movies_payload(query: str = "") -> dict:
@@ -118,6 +119,7 @@ def movies_payload(query: str = "") -> dict:
         media_id, media_type = public_media_id(movie)
         safe_code = urllib.parse.quote(str(code), safe="")
         safe_media = urllib.parse.quote(media_id, safe="")
+        poster_url = f"/poster/{safe_code}" if media_id and media_type == "photo" else ""
         rows.append({
             "code": code,
             "title": title,
@@ -126,7 +128,7 @@ def movies_payload(query: str = "") -> dict:
             "file_type": movie.get("file_type", "document"),
             "media_type": media_type,
             "media_url": f"/media/{safe_media}" if media_id else "",
-            "poster_url": f"/poster/{safe_code}" if media_id else "",
+            "poster_url": poster_url,
             "added_at": movie.get("added_at", ""),
         })
 
@@ -216,10 +218,16 @@ class KinoHandler(BaseHTTPRequestHandler):
                 bot_id = me.get("id")
                 result["name"] = me.get("first_name") or result["name"]
                 result["username"] = me.get("username") or ""
+                chat = {}
+                if result["username"]:
+                    chat_data = telegram_json("getChat", {"chat_id": f"@{result['username']}"})
+                    chat = chat_data.get("result", {}) if chat_data.get("ok") else {}
+                if chat.get("photo", {}).get("big_file_id"):
+                    result["photo_url"] = f"/media/{urllib.parse.quote(chat['photo']['big_file_id'], safe='')}"
                 if bot_id:
                     photos = telegram_json("getUserProfilePhotos", {"user_id": bot_id, "limit": 1})
                     photo_sets = photos.get("result", {}).get("photos", []) if photos.get("ok") else []
-                    if photo_sets and photo_sets[0]:
+                    if not result["photo_url"] and photo_sets and photo_sets[0]:
                         file_id = photo_sets[0][-1].get("file_id", "")
                         if file_id:
                             result["photo_url"] = f"/media/{urllib.parse.quote(file_id, safe='')}"
