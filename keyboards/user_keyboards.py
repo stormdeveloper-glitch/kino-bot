@@ -1,24 +1,19 @@
 """
 Foydalanuvchi klaviaturalari (aiogram v3)
 """
-from aiogram.enums import ButtonStyle
-from aiogram.types import (
-    InlineKeyboardMarkup, InlineKeyboardButton,
-    ReplyKeyboardMarkup, KeyboardButton,
-)
+from aiogram.types import InlineKeyboardMarkup, ReplyKeyboardMarkup
+
+from keyboards.button_styles import ibtn, kbtn
 
 
 def main_menu_kb(is_admin: bool = False, is_developer: bool = False) -> ReplyKeyboardMarkup:
     """Asosiy menyu (reply keyboard)"""
-    keyboard = [[KeyboardButton(text="🍿 Kino olish", style=ButtonStyle.SUCCESS)]]
-    keyboard.append([
-        KeyboardButton(text="❓ Yordam", style=ButtonStyle.PRIMARY),
-        KeyboardButton(text="ℹ️ Bot haqida", style=ButtonStyle.PRIMARY),
-    ])
+    keyboard = [[kbtn("🍿 Kino olish")]]
+    keyboard.append([kbtn("❓ Yordam"), kbtn("ℹ️ Bot haqida")])
     if is_admin:
-        keyboard.append([KeyboardButton(text="🛠 Admin panel", style=ButtonStyle.PRIMARY)])
+        keyboard.append([kbtn("🛠 Admin panel")])
     if is_developer:
-        keyboard.append([KeyboardButton(text="💻 Developer", style=ButtonStyle.PRIMARY)])
+        keyboard.append([kbtn("💻 Developer")])
     return ReplyKeyboardMarkup(keyboard=keyboard, resize_keyboard=True)
 
 
@@ -34,8 +29,6 @@ def subscription_kb(channels: list) -> InlineKeyboardMarkup:
         else:
             clean_id = str(ch_id).replace("-100", "")
             url = f"https://t.me/c/{clean_id}"
-        buttons.append([InlineKeyboardButton(text=f"📢 {title}", url=url, style=ButtonStyle.PRIMARY)])
-    buttons.append([
-        InlineKeyboardButton(text="✅ Obunani tekshirish", callback_data="check_sub", style=ButtonStyle.SUCCESS)
-    ])
+        buttons.append([ibtn(f"📢 {title}", url=url)])
+    buttons.append([ibtn("✅ Obunani tekshirish", callback_data="check_sub")])
     return InlineKeyboardMarkup(inline_keyboard=buttons)

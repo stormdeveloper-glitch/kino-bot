@@ -1,18 +1,20 @@
 """
 Developer klaviaturalari (aiogram v3)
 """
-from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from aiogram.types import InlineKeyboardMarkup
+
+from keyboards.button_styles import ibtn
 
 
 def developer_main_kb() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="📊 Tizim statistikasi", callback_data="dev_stats")],
-        [InlineKeyboardButton(text="⚙️ Muhit o'zgaruvchilari", callback_data="dev_env")],
-        [InlineKeyboardButton(text="🔙 Chiqish", callback_data="dev_exit")],
+        [ibtn("📊 Tizim statistikasi", callback_data="dev_stats")],
+        [ibtn("⚙️ Muhit o'zgaruvchilari", callback_data="dev_env")],
+        [ibtn("🔙 Chiqish", callback_data="dev_exit")],
     ])
 
 
 def dev_back_kb() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="🔙 Orqaga", callback_data="dev_menu")],
+        [ibtn("🔙 Orqaga", callback_data="dev_menu")],
     ])

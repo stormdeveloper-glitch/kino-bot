@@ -7,15 +7,16 @@ import logging
 from html import escape
 
 from aiogram import Router, F, Bot
-from aiogram.enums import ButtonStyle, ChatMemberStatus
+from aiogram.enums import ChatMemberStatus
 from aiogram.exceptions import TelegramForbiddenError, TelegramAPIError
 from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
 from aiogram.types import (
     Message, CallbackQuery,
-    InlineKeyboardMarkup, InlineKeyboardButton,
+    InlineKeyboardMarkup,
 )
 
+from keyboards.button_styles import ibtn
 from keyboards.admin_keyboards import (
     admin_main_kb, admin_settings_kb, back_kb, broadcast_confirm_kb,
     cancel_admin_kb, channels_list_kb, confirm_kb,
@@ -82,20 +83,8 @@ async def post_movie_to_channel(
 ):
     me = await bot.get_me()
     kb = InlineKeyboardMarkup(inline_keyboard=[
-        [
-            InlineKeyboardButton(
-                text="🎬 Tomosha qilish",
-                url=f"https://t.me/{me.username}?start={code}",
-                style=ButtonStyle.SUCCESS,
-            )
-        ],
-        [
-            InlineKeyboardButton(
-                text="🔎 Kod orqali olish",
-                url=f"https://t.me/{me.username}",
-                style=ButtonStyle.PRIMARY,
-            )
-        ],
+        [ibtn("🎬 Tomosha qilish", url=f"https://t.me/{me.username}?start={code}")],
+        [ibtn("🔎 Kod orqali olish", url=f"https://t.me/{me.username}")],
     ])
     safe_caption = trim_caption(caption)
 

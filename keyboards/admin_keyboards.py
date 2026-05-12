@@ -1,49 +1,50 @@
 """
 Admin klaviaturalari (aiogram v3)
 """
-from aiogram.enums import ButtonStyle
-from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from aiogram.types import InlineKeyboardMarkup
+
+from keyboards.button_styles import ibtn
 
 
 def admin_main_kb() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(inline_keyboard=[
         [
-            InlineKeyboardButton(text="🎬 Kino qo'shish", callback_data="admin_add_movie", style=ButtonStyle.SUCCESS),
-            InlineKeyboardButton(text="🗑 Kino o'chirish", callback_data="admin_del_movie", style=ButtonStyle.DANGER),
+            ibtn("🎬 Kino qo'shish", callback_data="admin_add_movie"),
+            ibtn("🗑 Kino o'chirish", callback_data="admin_del_movie"),
         ],
         [
-            InlineKeyboardButton(text="📋 Kinolar ro'yxati", callback_data="admin_movie_list", style=ButtonStyle.PRIMARY),
-            InlineKeyboardButton(text="📊 Statistika", callback_data="admin_stats", style=ButtonStyle.PRIMARY),
+            ibtn("📋 Kinolar ro'yxati", callback_data="admin_movie_list"),
+            ibtn("📊 Statistika", callback_data="admin_stats"),
         ],
         [
-            InlineKeyboardButton(text="📡 Kanal qo'shish", callback_data="admin_add_channel", style=ButtonStyle.SUCCESS),
-            InlineKeyboardButton(text="❌ Kanal o'chirish", callback_data="admin_del_channel", style=ButtonStyle.DANGER),
+            ibtn("📡 Kanal qo'shish", callback_data="admin_add_channel"),
+            ibtn("❌ Kanal o'chirish", callback_data="admin_del_channel"),
         ],
         [
-            InlineKeyboardButton(text="📋 Kanallar ro'yxati", callback_data="admin_channel_list", style=ButtonStyle.PRIMARY),
-            InlineKeyboardButton(text="📢 Broadcast", callback_data="admin_broadcast", style=ButtonStyle.SUCCESS),
+            ibtn("📋 Kanallar ro'yxati", callback_data="admin_channel_list"),
+            ibtn("📢 Broadcast", callback_data="admin_broadcast"),
         ],
-        [InlineKeyboardButton(text="⚙️ Sozlamalar va avto-post", callback_data="admin_settings", style=ButtonStyle.PRIMARY)],
-        [InlineKeyboardButton(text="📖 Pro qo'llanma", callback_data="guide_main", style=ButtonStyle.PRIMARY)],
+        [ibtn("⚙️ Sozlamalar va avto-post", callback_data="admin_settings")],
+        [ibtn("📖 Pro qo'llanma", callback_data="guide_main")],
     ])
 
 
 def admin_settings_kb() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="✏️ Xush kelibsiz matni", callback_data="settings_welcome", style=ButtonStyle.PRIMARY)],
-        [InlineKeyboardButton(text="✏️ Bot haqida matni", callback_data="settings_about", style=ButtonStyle.PRIMARY)],
-        [InlineKeyboardButton(text="✏️ Obuna eslatma matni", callback_data="settings_not_sub", style=ButtonStyle.PRIMARY)],
-        [InlineKeyboardButton(text="📢 Avto-post kanalini ulash", callback_data="settings_post_channel", style=ButtonStyle.SUCCESS)],
-        [InlineKeyboardButton(text="🧪 Avto-postni tekshirish", callback_data="settings_test_post", style=ButtonStyle.SUCCESS)],
-        [InlineKeyboardButton(text="◀️ Orqaga", callback_data="admin_back", style=ButtonStyle.DANGER)],
+        [ibtn("✏️ Xush kelibsiz matni", callback_data="settings_welcome")],
+        [ibtn("✏️ Bot haqida matni", callback_data="settings_about")],
+        [ibtn("✏️ Obuna eslatma matni", callback_data="settings_not_sub")],
+        [ibtn("📢 Avto-post kanalini ulash", callback_data="settings_post_channel")],
+        [ibtn("🧪 Avto-postni tekshirish", callback_data="settings_test_post")],
+        [ibtn("◀️ Orqaga", callback_data="admin_back")],
     ])
 
 
 def confirm_kb(action: str, item_id: str) -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(inline_keyboard=[
         [
-            InlineKeyboardButton(text="✅ Ha, o'chirish", callback_data=f"confirm_{action}_{item_id}", style=ButtonStyle.DANGER),
-            InlineKeyboardButton(text="❌ Yo'q", callback_data="admin_back", style=ButtonStyle.PRIMARY),
+            ibtn("✅ Ha, o'chirish", callback_data=f"confirm_{action}_{item_id}"),
+            ibtn("❌ Yo'q", callback_data="admin_back"),
         ]
     ])
 
@@ -56,35 +57,33 @@ def channels_list_kb(channels: list, for_delete: bool = False) -> InlineKeyboard
         username = ch.get("username", "")
         label = f"📡 {title} ({username})" if username else f"📡 {title}"
         if for_delete:
-            buttons.append([InlineKeyboardButton(text=f"🗑 {label}", callback_data=f"del_channel_{ch_id}", style=ButtonStyle.DANGER)])
+            buttons.append([ibtn(f"🗑 {label}", callback_data=f"del_channel_{ch_id}")])
         else:
-            buttons.append([InlineKeyboardButton(text=label, callback_data="noop", style=ButtonStyle.PRIMARY)])
-    buttons.append([InlineKeyboardButton(text="◀️ Orqaga", callback_data="admin_back", style=ButtonStyle.DANGER)])
+            buttons.append([ibtn(label, callback_data="noop")])
+    buttons.append([ibtn("◀️ Orqaga", callback_data="admin_back")])
     return InlineKeyboardMarkup(inline_keyboard=buttons)
 
 
 def back_kb() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="◀️ Orqaga", callback_data="admin_back", style=ButtonStyle.DANGER)]
+        [ibtn("◀️ Orqaga", callback_data="admin_back")]
     ])
 
 
 def cancel_admin_kb() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="❌ Bekor qilish", callback_data="admin_cancel_fsm", style=ButtonStyle.DANGER)]
+        [ibtn("❌ Bekor qilish", callback_data="admin_cancel_fsm")]
     ])
 
 
 def broadcast_confirm_kb() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(inline_keyboard=[
         [
-            InlineKeyboardButton(text="✅ Yuborish", callback_data="broadcast_confirm", style=ButtonStyle.SUCCESS),
-            InlineKeyboardButton(text="❌ Bekor", callback_data="admin_cancel_fsm", style=ButtonStyle.DANGER),
+            ibtn("✅ Yuborish", callback_data="broadcast_confirm"),
+            ibtn("❌ Bekor", callback_data="admin_cancel_fsm"),
         ]
     ])
 
-
-# ════════════════ QO'LLANMA KLAVIATURALARI ════════════════
 
 GUIDE_SECTIONS = {
     "guide_start":      "🚀 Boshlash (1/8)",
@@ -101,9 +100,8 @@ GUIDE_ORDER = list(GUIDE_SECTIONS.keys())
 
 
 def guide_main_kb() -> InlineKeyboardMarkup:
-    buttons = [[InlineKeyboardButton(text=label, callback_data=cb)]
-               for cb, label in GUIDE_SECTIONS.items()]
-    buttons.append([InlineKeyboardButton(text="◀️ Admin panelga", callback_data="admin_back", style=ButtonStyle.PRIMARY)])
+    buttons = [[ibtn(label, callback_data=cb)] for cb, label in GUIDE_SECTIONS.items()]
+    buttons.append([ibtn("◀️ Admin panelga", callback_data="admin_back")])
     return InlineKeyboardMarkup(inline_keyboard=buttons)
 
 
@@ -111,11 +109,11 @@ def guide_nav_kb(current: str) -> InlineKeyboardMarkup:
     idx = GUIDE_ORDER.index(current)
     nav_row = []
     if idx > 0:
-        nav_row.append(InlineKeyboardButton(text="⬅️ Oldingi", callback_data=GUIDE_ORDER[idx - 1], style=ButtonStyle.PRIMARY))
-    nav_row.append(InlineKeyboardButton(text="📋 Ro'yxat", callback_data="guide_main", style=ButtonStyle.PRIMARY))
+        nav_row.append(ibtn("⬅️ Oldingi", callback_data=GUIDE_ORDER[idx - 1]))
+    nav_row.append(ibtn("📋 Ro'yxat", callback_data="guide_main"))
     if idx < len(GUIDE_ORDER) - 1:
-        nav_row.append(InlineKeyboardButton(text="Keyingi ➡️", callback_data=GUIDE_ORDER[idx + 1], style=ButtonStyle.PRIMARY))
+        nav_row.append(ibtn("Keyingi ➡️", callback_data=GUIDE_ORDER[idx + 1]))
     return InlineKeyboardMarkup(inline_keyboard=[
         nav_row,
-        [InlineKeyboardButton(text="🏠 Admin panelga", callback_data="admin_back", style=ButtonStyle.PRIMARY)],
+        [ibtn("🏠 Admin panelga", callback_data="admin_back")],
     ])
