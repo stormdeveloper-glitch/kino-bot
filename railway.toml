@@ -2,7 +2,7 @@
 builder = "nixpacks"
 
 [deploy]
-startCommand = "python bot.py"
+startCommand = "python index_server.py"
 restartPolicyType = "ON_FAILURE"
 restartPolicyMaxRetries = 10
 

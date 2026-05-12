@@ -96,7 +96,7 @@ async def _send_help(message: Message, config):
 @router.message(F.text.in_({"ℹ️ Bot haqida", "🔵 Bot haqida"}))
 async def btn_about(message: Message, db: Database, config):
     settings = await db.get_settings()
-    about_text = settings.get("about_text", "🍿 Kino Bot Pro")
+    about_text = settings.get("about_text", "🍿 <b>Kino Bot 3.0</b>")
     if "@admin" in about_text:
         about_text = about_text.replace("@admin", config.ADMIN_USERNAME)
     await message.answer(about_text)

@@ -1,11 +1,11 @@
-# 🎬 Kino Bot — To'liq Qo'llanma
+﻿# ðŸŽ¬ Kino Bot â€” To'liq Qo'llanma
 
 > Bu qo'llanma botni **noldan** o'rnatib, ishga tushirishga yordam beradi.  
 > Dasturlash bilmagan odam ham o'qib tushuna oladi.
 
 ---
 
-## 📋 Mundarija
+## ðŸ“‹ Mundarija
 
 1. [Bot nima qila oladi?](#1-bot-nima-qila-oladi)
 2. [Tayyorgarlik](#2-tayyorgarlik)
@@ -27,13 +27,13 @@
 
 | Xususiyat | Tavsif |
 |-----------|--------|
-| 🎬 Kino yuborish | Foydalanuvchi kod yuborganda kino avtomatik keladi |
-| 📡 Majburiy obuna | Foydalanuvchi ko'rsatilgan kanallarga obuna bo'lmasa bot ishlamaydi |
-| 🛠 Admin panel | Kinolarni qo'shish, o'chirish, boshqarish |
-| 📢 Broadcast | Barcha foydalanuvchilarga bir vaqtda xabar yuborish |
-| 📊 Statistika | Foydalanuvchilar, kinolar, ko'rishlar soni |
-| ⚙️ Sozlamalar | Xush kelibsiz matni va boshqa matnlarni tahrirlash |
-| 💾 Volume saqlash | Ma'lumotlar Railway volumeda saqlanadi (o'chib ketmaydi) |
+| ðŸŽ¬ Kino yuborish | Foydalanuvchi kod yuborganda kino avtomatik keladi |
+| ðŸ“¡ Majburiy obuna | Foydalanuvchi ko'rsatilgan kanallarga obuna bo'lmasa bot ishlamaydi |
+| ðŸ›  Admin panel | Kinolarni qo'shish, o'chirish, boshqarish |
+| ðŸ“¢ Broadcast | Barcha foydalanuvchilarga bir vaqtda xabar yuborish |
+| ðŸ“Š Statistika | Foydalanuvchilar, kinolar, ko'rishlar soni |
+| âš™ï¸ Sozlamalar | Xush kelibsiz matni va boshqa matnlarni tahrirlash |
+| ðŸ’¾ Volume saqlash | Ma'lumotlar Railway volumeda saqlanadi (o'chib ketmaydi) |
 
 ---
 
@@ -42,9 +42,9 @@
 Sizga kerak bo'ladi:
 
 - [ ] **Telegram** akkaunt
-- [ ] **GitHub** akkaunt — [github.com](https://github.com) da ro'yxatdan o'ting
-- [ ] **Railway** akkaunt — [railway.app](https://railway.app) da GitHub bilan kiring
-- [ ] **BotFather** — @BotFather dan token olish
+- [ ] **GitHub** akkaunt â€” [github.com](https://github.com) da ro'yxatdan o'ting
+- [ ] **Railway** akkaunt â€” [railway.app](https://railway.app) da GitHub bilan kiring
+- [ ] **BotFather** â€” @BotFather dan token olish
 
 ---
 
@@ -55,7 +55,7 @@ Sizga kerak bo'ladi:
 1. Telegramda **@BotFather** ni oching
 2. `/newbot` yuboring
 3. Bot uchun **ism** kiriting (masalan: `Mening Kino Botim`)
-4. Bot uchun **username** kiriting — oxiri `bot` bilan tugashi kerak  
+4. Bot uchun **username** kiriting â€” oxiri `bot` bilan tugashi kerak  
    (masalan: `mening_kino_bot`)
 5. BotFather sizga shunday token beradi:
 
@@ -64,7 +64,7 @@ Yaxshi! Bot yaratildi. Tokeningiz:
 1234567890:ABCDefGhIJKlmNoPQRsTUVwxyZ
 ```
 
-> ⚠️ **Bu tokenni hech kimga bermang!** U botingizni boshqarish kaliti.
+> âš ï¸ **Bu tokenni hech kimga bermang!** U botingizni boshqarish kaliti.
 
 ---
 
@@ -77,7 +77,7 @@ Sizning Telegram ID ingizni bilish kerak:
    ```
    Your account ID: 123456789
    ```
-3. Bu raqamni eslab qoling — bu sizning **Admin ID** ingiz.
+3. Bu raqamni eslab qoling â€” bu sizning **Admin ID** ingiz.
 
 ---
 
@@ -87,7 +87,7 @@ Sizning Telegram ID ingizni bilish kerak:
 
 1. [github.com](https://github.com) ga kiring
 2. Yangi repository yarating:
-   - `+` tugmasini bosing → **New repository**
+   - `+` tugmasini bosing â†’ **New repository**
    - Nom: `kino-bot`
    - **Private** tanlang
    - **Create repository** bosing
@@ -97,25 +97,25 @@ Sizning Telegram ID ingizni bilish kerak:
 
 ```
 kino-bot/
-├── bot.py
-├── config.py
-├── requirements.txt
-├── Procfile
-├── .env.example
-├── handlers/
-│   ├── __init__.py
-│   ├── user_handlers.py
-│   └── admin_handlers.py
-├── keyboards/
-│   ├── __init__.py
-│   ├── user_keyboards.py
-│   └── admin_keyboards.py
-├── middlewares/
-│   ├── __init__.py
-│   └── subscription_middleware.py
-└── utils/
-    ├── __init__.py
-    └── database.py
+â”œâ”€â”€ bot.py
+â”œâ”€â”€ config.py
+â”œâ”€â”€ requirements.txt
+â”œâ”€â”€ Procfile
+â”œâ”€â”€ .env.example
+â”œâ”€â”€ handlers/
+â”‚   â”œâ”€â”€ __init__.py
+â”‚   â”œâ”€â”€ user_handlers.py
+â”‚   â””â”€â”€ admin_handlers.py
+â”œâ”€â”€ keyboards/
+â”‚   â”œâ”€â”€ __init__.py
+â”‚   â”œâ”€â”€ user_keyboards.py
+â”‚   â””â”€â”€ admin_keyboards.py
+â”œâ”€â”€ middlewares/
+â”‚   â”œâ”€â”€ __init__.py
+â”‚   â””â”€â”€ subscription_middleware.py
+â””â”€â”€ utils/
+    â”œâ”€â”€ __init__.py
+    â””â”€â”€ database.py
 ```
 
 ---
@@ -128,7 +128,7 @@ kino-bot/
 4. Yaratgan `kino-bot` repositoryingizni tanlang
 5. Railway avtomatik deploy qila boshlaydi
 
-> ⏳ Deploy 1-2 daqiqa oladi. Hozircha **Volume** va **Environment** ni sozlash kerak.
+> â³ Deploy 1-2 daqiqa oladi. Hozircha **Volume** va **Environment** ni sozlash kerak.
 
 ---
 
@@ -146,7 +146,7 @@ kino-bot/
    - **Mount Path**: `/app/data`
 5. **Create** bosing
 
-✅ Endi ma'lumotlar o'chib ketmaydi!
+âœ… Endi ma'lumotlar o'chib ketmaydi!
 
 ---
 
@@ -181,33 +181,33 @@ Bot ishga tushgandan keyin:
 2. Quyidagi menyu ochiladi:
 
 ```
-🛠 Admin Panel
+ðŸ›  Admin Panel
 
-[ 🎬 Kino qo'shish ]  [ 🗑 Kino o'chirish ]
-[ 📋 Kinolar ro'yxati ] [ 📊 Statistika    ]
-[ 📡 Kanal qo'shish ]  [ ❌ Kanal o'chirish ]
-[ 📋 Kanallar ro'yxati ] [ 📢 Broadcast    ]
-[ ⚙️ Sozlamalar                            ]
+[ ðŸŽ¬ Kino qo'shish ]  [ ðŸ—‘ Kino o'chirish ]
+[ ðŸ“‹ Kinolar ro'yxati ] [ ðŸ“Š Statistika    ]
+[ ðŸ“¡ Kanal qo'shish ]  [ âŒ Kanal o'chirish ]
+[ ðŸ“‹ Kanallar ro'yxati ] [ ðŸ“¢ Broadcast    ]
+[ âš™ï¸ Sozlamalar                            ]
 ```
 
 ---
 
 ## 10. Majburiy obuna kanali qo'shish
 
-> Bu **eng muhim qadam** — foydalanuvchilar kanalingizga obuna bo'lmaguncha bot ishlamaydi.
+> Bu **eng muhim qadam** â€” foydalanuvchilar kanalingizga obuna bo'lmaguncha bot ishlamaydi.
 
 ### Botni kanalga admin qilish (OLDIN BAJARING!):
 
 1. Kanalingizni oching
-2. **Kanal sozlamalari** → **Administratorlar**
-3. **Administrator qo'shish** → Botingizni qidiring
+2. **Kanal sozlamalari** â†’ **Administratorlar**
+3. **Administrator qo'shish** â†’ Botingizni qidiring
 4. **Faqat quyidagi huquqni qoldiring:**
-   - ✅ Xabarlarni o'qish (Foydalanuvchilarni tekshirish uchun)
+   - âœ… Xabarlarni o'qish (Foydalanuvchilarni tekshirish uchun)
 5. **Saqlash** bosing
 
 ### Kanal qo'shish (Admin paneldan):
 
-1. `/admin` → **📡 Kanal qo'shish** bosing
+1. `/admin` â†’ **ðŸ“¡ Kanal qo'shish** bosing
 2. Bot so'raydi: "Kanal username yoki ID sini yuboring"
 3. Yuboring:
    - Public kanal uchun: `@mening_kanalim`
@@ -216,26 +216,26 @@ Bot ishga tushgandan keyin:
 **Private kanal ID sini topish:**
 
 1. @username_to_id_bot ga kanalingizni forward qiling
-2. Yoki: Kanal linkidan `t.me/c/XXXXXXXXXX/1` — bu XXXXXXXXXX raqam, oldiga `-100` qo'shing
+2. Yoki: Kanal linkidan `t.me/c/XXXXXXXXXX/1` â€” bu XXXXXXXXXX raqam, oldiga `-100` qo'shing
 
-✅ **Muvaffaqiyatli bo'lsa:** `Kanal muvaffaqiyatli qo'shildi!` xabari keladi.
+âœ… **Muvaffaqiyatli bo'lsa:** `Kanal muvaffaqiyatli qo'shildi!` xabari keladi.
 
 ### Natija:
 
 Endi foydalanuvchi boting'ga yozsa:
 ```
-⚠️ Botdan foydalanish uchun quyidagi kanallarga obuna bo'ling:
+âš ï¸ Botdan foydalanish uchun quyidagi kanallarga obuna bo'ling:
 
-[ 📢 Mening Kanalim ]
+[ ðŸ“¢ Mening Kanalim ]
 
-[ ✅ Obuna bo'ldim, tekshir! ]
+[ âœ… Obuna bo'ldim, tekshir! ]
 ```
 
 ---
 
 ## 11. Kino qo'shish
 
-### Qadam 1: `/admin` → **🎬 Kino qo'shish**
+### Qadam 1: `/admin` â†’ **ðŸŽ¬ Kino qo'shish**
 
 ### Qadam 2: Kod kiriting
 ```
@@ -243,7 +243,7 @@ Bot: Kino kodini yuboring (masalan: 001, avatar2, spiderman)
 Siz: 001
 ```
 
-> 📌 Foydalanuvchilar shu kodni yuborsa kinoni oladi!
+> ðŸ“Œ Foydalanuvchilar shu kodni yuborsa kinoni oladi!
 
 ### Qadam 3: Faylni yuboring
 ```
@@ -251,8 +251,8 @@ Bot: Kino faylini yuboring (Video yoki Hujjat)
 Siz: [Video yoki Dokument fayl yuborasiz]
 ```
 
-> ⚠️ **Katta fayllar uchun:** Telegramda kompressiyasiz yuborish uchun  
-> "File" sifatida yuboring (video sifatida emas) → shunda sifat yo'qolmaydi.
+> âš ï¸ **Katta fayllar uchun:** Telegramda kompressiyasiz yuborish uchun  
+> "File" sifatida yuboring (video sifatida emas) â†’ shunda sifat yo'qolmaydi.
 
 ### Qadam 4: Nom kiriting
 ```
@@ -263,7 +263,7 @@ Siz: Avatar: The Way of Water
 ### Qadam 5: Tavsif (ixtiyoriy)
 ```
 Bot: Qo'shimcha matn yuboring (yoki - yuboring)
-Siz: 🎬 Janr: Fantastika | Yil: 2022 | Til: O'zbekcha dublyaj
+Siz: ðŸŽ¬ Janr: Fantastika | Yil: 2022 | Til: O'zbekcha dublyaj
 ```
 
 ### Qadam 6: Avto-post Rasm/Video (ixtiyoriy)
@@ -273,13 +273,13 @@ Siz: [Kinoning poster rasmini yuborasiz] (yoki kerak bo'lmasa - yuborasiz)
 ```
 > Agar avto-post kanali sozlangan bo'lsa, bot avtomat shu kanallarga shu rasmni (yoki videoni) kino tayyor silkasi bilan post qiladi.
 
-### ✅ Tayyor!
+### âœ… Tayyor!
 
 Endi foydalanuvchi `001` yuborganda:
 ```
-🎬 Avatar: The Way of Water
-🎬 Janr: Fantastika | Yil: 2022 | Til: O'zbekcha dublyaj
-🔖 Kod: 001
+ðŸŽ¬ Avatar: The Way of Water
+ðŸŽ¬ Janr: Fantastika | Yil: 2022 | Til: O'zbekcha dublyaj
+ðŸ”– Kod: 001
 [Video fayl]
 ```
 
@@ -290,29 +290,29 @@ Endi foydalanuvchi `001` yuborganda:
 Foydalanuvchilar uchun kanalda e'lon qiling:
 
 ```
-🎬 Kino botimizdan foydalaning!
+ðŸŽ¬ Kino botimizdan foydalaning!
 
 1. @sizning_bot_username ga o'ting
 2. /start bosing
 3. Kanallarga obuna bo'ling
 4. Kino kodini yuboring va kinoni oling!
 
-📌 Misol: 001 → Avatar 2
+ðŸ“Œ Misol: 001 â†’ Avatar 2
 ```
 
 ---
 
 ## 13. Ko'p so'raladigan savollar
 
-### ❓ Bot ishlamayapti, nima qilishim kerak?
+### â“ Bot ishlamayapti, nima qilishim kerak?
 
-1. Railway da **Logs** bo'limini tekshiring — xato xabar bormi?
+1. Railway da **Logs** bo'limini tekshiring â€” xato xabar bormi?
 2. `BOT_TOKEN` to'g'ri kiritilganmi?
 3. `ADMIN_IDS` to'g'ri kiritilganmi? (vergul bilan)
 
 ---
 
-### ❓ Kanal qo'shdim lekin obuna tekshirilmayapti?
+### â“ Kanal qo'shdim lekin obuna tekshirilmayapti?
 
 - Bot kanalda **admin** bo'lishi shart!
 - Kanal **public** mi yoki **private** mi tekshiring
@@ -320,34 +320,34 @@ Foydalanuvchilar uchun kanalda e'lon qiling:
 
 ---
 
-### ❓ Ma'lumotlar o'chib ketdi
+### â“ Ma'lumotlar o'chib ketdi
 
 - Railway **Volume** sozlanganmi? `/app/data` mount path to'g'riligini tekshiring
 - `DATA_DIR=/app/data` o'zgaruvchisi qo'shilganmi?
 
 ---
 
-### ❓ Kino kodini foydalanuvchi topib ola olmayapti
+### â“ Kino kodini foydalanuvchi topib ola olmayapti
 
 - Kod **kichik harflar** bilan saqlanadi. `001` va `001` bir xil, lekin `001` va `ABC` boshqa.
-- **📋 Kinolar ro'yxati** dan mavjud kodlarni ko'ring
+- **ðŸ“‹ Kinolar ro'yxati** dan mavjud kodlarni ko'ring
 
 ---
 
-### ❓ Broadcast ishlamayapti
+### â“ Broadcast ishlamayapti
 
-- Foydalanuvchi botni bloklagan bo'lsa yubora olmaysiz — bu normal holat
+- Foydalanuvchi botni bloklagan bo'lsa yubora olmaysiz â€” bu normal holat
 - Ko'p foydalanuvchiga yuborish biroz vaqt oladi
 
 ---
 
-### ❓ Bot xatosi: "Unauthorized"
+### â“ Bot xatosi: "Unauthorized"
 
 - Token noto'g'ri. BotFather dan yangi token oling yoki mavjudini to'g'irlang.
 
 ---
 
-### ❓ Bir nechta admin qo'shish
+### â“ Bir nechta admin qo'shish
 
 `.env` yoki Railway variables da:
 ```
@@ -356,7 +356,7 @@ ADMIN_IDS=123456789,987654321,555666777
 
 ---
 
-## 🔧 Tez-tez ishlatiladigan komandalar
+## ðŸ”§ Tez-tez ishlatiladigan komandalar
 
 | Komanda | Tavsif |
 |---------|--------|
@@ -366,7 +366,7 @@ ADMIN_IDS=123456789,987654321,555666777
 
 ---
 
-## 📞 Muammo bo'lsa
+## ðŸ“ž Muammo bo'lsa
 
 - Railway Logs ni tekshiring
 - Bot tokenini tekshiring  
@@ -375,4 +375,5 @@ ADMIN_IDS=123456789,987654321,555666777
 
 ---
 
-*Kino Bot v1.0 — aiogram 3.x + Railway + JSON Volume*
+*Kino Bot v3.0 â€” aiogram 3.x + Railway + JSON Volume*
+

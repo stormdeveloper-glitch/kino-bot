@@ -31,13 +31,14 @@ class Database:
             "users.json": {},
             "settings.json": {
                 "welcome_text": (
-                    "🍿 <b>Kino Bot Pro</b>\n\n"
+                    "🍿 <b>Kino Bot 3.0</b>\n\n"
                     "🟡 Kino olish uchun <b>kino kodini</b> yuboring.\n"
                     "🔎 Masalan: <code>001</code> yoki <code>avatar2</code>\n\n"
                     "🟢 Kod to'g'ri bo'lsa, fayl darhol yuboriladi."
                 ),
                 "about_text": (
-                    "🍿 <b>Kino Bot Pro</b>\n\n"
+                    "🍿 <b>Kino Bot 3.0</b>\n\n"
+                    "📌 Versiya: 3.0\n"
                     "🟢 Tezkor kino qidirish\n"
                     "🟡 Kod orqali avtomatik yuborish\n"
                     "🔵 Majburiy obuna va kanal avto-posti\n\n"
