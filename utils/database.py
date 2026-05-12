@@ -86,6 +86,8 @@ class Database:
         file_type: str,
         added_by: int,
         caption: str = "",
+        post_file_id: str = "",
+        post_file_type: str = "",
     ) -> bool:
         """Kino qo'shish. False qaytarsa - kod allaqachon mavjud."""
         async with self._lock:
@@ -96,6 +98,8 @@ class Database:
                 "title": title,
                 "file_id": file_id,
                 "file_type": file_type,  # video | document | photo
+                "post_file_id": post_file_id,
+                "post_file_type": post_file_type,
                 "caption": caption,
                 "added_by": added_by,
                 "added_at": datetime.now().isoformat(),

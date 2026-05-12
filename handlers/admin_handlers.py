@@ -289,6 +289,8 @@ async def fsm_movie_post_media(message: Message, state: FSMContext, bot: Bot, db
     success = await db.add_movie(
         code=code, title=title, file_id=file_id,
         file_type=file_type, added_by=message.from_user.id, caption=full_caption,
+        post_file_id=post_file_id or "",
+        post_file_type=post_file_type or "",
     )
 
     await state.clear()
