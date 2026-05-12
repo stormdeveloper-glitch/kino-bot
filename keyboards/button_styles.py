@@ -6,14 +6,14 @@ KeyboardButton ishlatish o'rniga ibtn/kbtn helperlaridan foydalaning.
 Helper matn va callback_data bo'yicha style rangini o'zi tanlaydi.
 """
 from aiogram.enums import ButtonStyle
-from aiogram.types import InlineKeyboardButton, KeyboardButton
+from aiogram.types import InlineKeyboardButton, KeyboardButton, WebAppInfo
 
 
 SUCCESS_HINTS = (
     "add", "create", "save", "send", "submit", "confirm", "check", "start",
     "watch", "download", "upload", "post", "broadcast", "test",
     "qo'sh", "qosh", "saqla", "yubor", "tasdiq", "tekshir", "ulash",
-    "tomosha", "yuklash", "boshlash",
+    "tomosha", "yuklash", "boshlash", "web", "katalog",
 )
 
 DANGER_HINTS = (
@@ -54,5 +54,14 @@ def ibtn(
     )
 
 
-def kbtn(text: str, style: ButtonStyle | None = None) -> KeyboardButton:
-    return KeyboardButton(text=text, style=style or auto_style(text))
+def kbtn(
+    text: str,
+    style: ButtonStyle | None = None,
+    web_app_url: str | None = None,
+) -> KeyboardButton:
+    web_app = WebAppInfo(url=web_app_url) if web_app_url else None
+    return KeyboardButton(
+        text=text,
+        web_app=web_app,
+        style=style or auto_style(text, web_app_url),
+    )

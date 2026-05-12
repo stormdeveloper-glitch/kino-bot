@@ -5,10 +5,13 @@ from aiogram.types import InlineKeyboardMarkup, ReplyKeyboardMarkup
 
 from keyboards.button_styles import ibtn, kbtn
 
+WEB_APP_URL = "https://axror.up.railway.app"
+
 
 def main_menu_kb(is_admin: bool = False, is_developer: bool = False) -> ReplyKeyboardMarkup:
     """Asosiy menyu (reply keyboard)"""
     keyboard = [[kbtn("🍿 Kino olish")]]
+    keyboard.append([kbtn("🌐 Web katalog", web_app_url=WEB_APP_URL)])
     keyboard.append([kbtn("❓ Yordam"), kbtn("ℹ️ Bot haqida")])
     if is_admin:
         keyboard.append([kbtn("🛠 Admin panel")])
